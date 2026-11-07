@@ -360,35 +360,22 @@
                                     <span class="window-dot dot-green"></span>
                                     <span class="window-title">ApiGatewayBridge.php</span>
                                 </div>
-                                <div class="code-content">
-                                    <span class="token-keyword">class</span> <span
-                                        class="token-class">ApiGatewayBridge</span> {
-                                    <span class="token-comment">// Clean third-party integration with error
-                                        handling</span>
-                                    <span class="token-keyword">public function</span> <span
-                                        class="token-function">dispatchPaymentWebhook</span>(<span
-                                        class="token-string">$payload</span>) {
-                                    <span class="token-keyword">$response</span> = Http::withToken(config(<span
-                                        class="token-string">'services.gateway.key'</span>))
-                                    ->timeout(5)
-                                    ->post(<span class="token-string">'https://api.gateway.com/v1/checkout'</span>, [
-                                    <span class="token-string">'amount'</span> => <span
-                                        class="token-string">$payload</span>[<span
-                                        class="token-string">'amount'</span>],
-                                    <span class="token-string">'currency'</span> => <span
-                                        class="token-string">'INR'</span>,
-                                    <span class="token-string">'metadata'</span> => [<span
-                                        class="token-string">'user_id'</span> => auth()->id()]
-                                    ]);
+                                <div class="code-content"><pre><code><span class="token-keyword">class</span> <span class="token-class">ApiGatewayBridge</span>
+{
+    <span class="token-comment">// Secure webhook processor</span>
+    <span class="token-keyword">public function</span> <span class="token-function">handleWebhook</span>(<span class="token-class">Request</span> <span class="token-string">$request</span>): <span class="token-class">JsonResponse</span>
+    {
+        <span class="token-string">$signature</span> = <span class="token-string">$request</span>->header(<span class="token-string">'X-Webhook-Signature'</span>);
+        <span class="token-keyword">$verified</span> = <span class="token-class">SignatureValidator</span>::<span class="token-function">verify</span>(<span class="token-string">$signature</span>);
 
-                                    <span class="token-keyword">return</span> <span
-                                        class="token-string">$response</span>->successful()
-                                    ? <span class="token-string">$response</span>->json()
-                                    : <span class="token-keyword">throw new</span> <span
-                                        class="token-class">PaymentException</span>();
-                                    }
-                                    }
-                                </div>
+        <span class="token-keyword">if</span> (!<span class="token-keyword">$verified</span>) {
+            <span class="token-keyword">return</span> response()->json([<span class="token-string">'error'</span> => <span class="token-string">'Unauthorized'</span>], <span class="token-number">401</span>);
+        }
+
+        <span class="token-class">ProcessPaymentJob</span>::<span class="token-function">dispatch</span>(<span class="token-string">$request</span>->all());
+        <span class="token-keyword">return</span> response()->json([<span class="token-string">'status'</span> => <span class="token-string">'queued'</span>]);
+    }
+}</code></pre></div>
                             </div>
                         </div>
                     </div>
