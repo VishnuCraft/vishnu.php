@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTypewriter();
   initHeaderScroll();
   initNavScrollSpy();
+  initMobileMenu();
   initSkillFilters();
   initProjectFilters();
   initProjectModal();
@@ -638,3 +639,52 @@ if (contactForm) {
     contactForm.reset();
   });
 }
+
+/*=============== MOBILE HAMBURGER MENU DROPDOWN ===============*/
+function initMobileMenu() {
+  const toggleBtn = document.getElementById("nav-toggle-btn");
+  const toggleIcon = document.getElementById("nav-toggle-icon");
+  const navMenu = document.getElementById("nav-menu");
+  const navLinks = document.querySelectorAll(".nav__link");
+
+  if (!toggleBtn || !navMenu) return;
+
+  function toggleMenu() {
+    navMenu.classList.toggle("show-menu");
+    const isOpen = navMenu.classList.contains("show-menu");
+    if (toggleIcon) {
+      toggleIcon.className = isOpen ? "bx bx-x" : "bx bx-menu";
+    }
+  }
+
+  function closeMenu() {
+    navMenu.classList.remove("show-menu");
+    if (toggleIcon) {
+      toggleIcon.className = "bx bx-menu";
+    }
+  }
+
+  toggleBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      closeMenu();
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!navMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener("scroll", () => {
+    if (navMenu.classList.contains("show-menu")) {
+      closeMenu();
+    }
+  }, { passive: true });
+}
+
