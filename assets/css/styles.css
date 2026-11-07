@@ -450,8 +450,11 @@ ul {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-body:hover .mouse-spotlight {
-  opacity: 1;
+
+@media (hover: hover) and (pointer: fine) {
+  body:hover .mouse-spotlight {
+    opacity: 1;
+  }
 }
 
 .cursor-dot {
@@ -2130,17 +2133,39 @@ body:hover .mouse-spotlight {
     width: 100% !important;
   }
 
+  /* Disable mouse-spotlight & cursor dot on touch devices to eliminate accidental corner blobs */
+  .mouse-spotlight,
+  .cursor-dot {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  body:hover .mouse-spotlight {
+    display: none !important;
+    opacity: 0 !important;
+  }
+
+  /* Subtle, soft ambient mesh on mobile */
+  .bg-mesh-static {
+    background: 
+      radial-gradient(circle at 50% 10%, rgba(99, 102, 241, 0.08) 0%, transparent 60%),
+      radial-gradient(circle at 50% 90%, rgba(6, 182, 212, 0.06) 0%, transparent 60%) !important;
+  }
+
   .container {
     padding-left: 1.15rem !important;
     padding-right: 1.15rem !important;
   }
 
   .section {
-    padding: 3.75rem 0 2rem !important;
+    padding: 3.5rem 0 2rem !important;
   }
 
   .section__header {
     margin-bottom: 2rem !important;
+    text-align: center !important;
   }
 
   .section__pill {
@@ -2162,7 +2187,8 @@ body:hover .mouse-spotlight {
 
   /* Header & Navigation Bar */
   .header {
-    padding: 0.75rem 0 !important;
+    padding-top: calc(0.85rem + env(safe-area-inset-top, 0px)) !important;
+    padding-bottom: 0.85rem !important;
   }
 
   .nav {
@@ -2203,18 +2229,18 @@ body:hover .mouse-spotlight {
     border-radius: 10px !important;
   }
 
-  /* Sleek Floating Bottom Navigation Dock (App Dock Style) */
+  /* Sleek Floating Bottom Navigation Dock (Apple App Dock Style) */
   .nav__menu {
     position: fixed !important;
     top: auto !important;
-    bottom: 1.15rem !important;
+    bottom: calc(0.85rem + env(safe-area-inset-bottom, 0px)) !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
-    width: calc(100% - 2.25rem) !important;
-    max-width: 360px !important;
+    width: calc(100% - 2.5rem) !important;
+    max-width: 340px !important;
     z-index: 1000 !important;
-    padding: 0.35rem 0.45rem !important;
-    background: rgba(10, 16, 32, 0.94) !important;
+    padding: 0.3rem 0.4rem !important;
+    background: rgba(10, 16, 32, 0.92) !important;
     border: 1px solid rgba(255, 255, 255, 0.12) !important;
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
@@ -2235,8 +2261,8 @@ body:hover .mouse-spotlight {
   }
 
   .nav__link {
-    padding: 0.6rem !important;
-    font-size: 1.25rem !important;
+    padding: 0.55rem 0.65rem !important;
+    font-size: 1.2rem !important;
     border-radius: 999px !important;
     display: flex !important;
     align-items: center !important;
@@ -2250,8 +2276,8 @@ body:hover .mouse-spotlight {
   /* Hero Section */
   .hero {
     min-height: auto !important;
-    padding-top: 5.25rem !important;
-    padding-bottom: 2.75rem !important;
+    padding-top: 5rem !important;
+    padding-bottom: 2.5rem !important;
   }
 
   .hero__container {
@@ -2271,24 +2297,25 @@ body:hover .mouse-spotlight {
   .status-pill {
     font-size: 0.72rem !important;
     padding: 0.35rem 0.75rem !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.85rem !important;
   }
 
   .hero__greeting {
-    font-size: 0.82rem !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.08em !important;
     margin-bottom: 0.35rem !important;
   }
 
   .hero__name {
     font-size: 2.25rem !important;
-    line-height: 1.15 !important;
+    line-height: 1.12 !important;
     margin-bottom: 0.65rem !important;
   }
 
   .hero__role-box {
-    font-size: 1.1rem !important;
+    font-size: 1.05rem !important;
     min-height: 2.2rem !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.85rem !important;
   }
 
   .hero__bio {
@@ -2297,21 +2324,34 @@ body:hover .mouse-spotlight {
     margin-bottom: 1.5rem !important;
   }
 
+  /* Compact 2-Row Hero Buttons */
   .hero__actions {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
     gap: 0.65rem !important;
-    margin-bottom: 2rem !important;
+    width: 100% !important;
+    margin-bottom: 1.75rem !important;
   }
 
-  .hero__actions .btn {
+  .hero__actions .btn:first-child {
+    grid-column: span 2 !important;
     width: 100% !important;
     justify-content: center !important;
-    padding: 0.8rem 1.25rem !important;
-    font-size: 0.9rem !important;
+    padding: 0.85rem 1.25rem !important;
+    font-size: 0.95rem !important;
+    box-shadow: 0 4px 18px rgba(99, 102, 241, 0.4) !important;
   }
 
+  .hero__actions .btn:not(:first-child) {
+    grid-column: span 1 !important;
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 0.75rem 0.5rem !important;
+    font-size: 0.82rem !important;
+    gap: 0.35rem !important;
+  }
+
+  /* Glassmorphic Metric Cards for Hero Stats */
   .hero__stats {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
@@ -2322,99 +2362,111 @@ body:hover .mouse-spotlight {
   }
 
   .stat-item {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid var(--border-subtle) !important;
+    border-radius: 0.85rem !important;
+    padding: 0.75rem 0.35rem !important;
     text-align: center !important;
+    backdrop-filter: blur(8px) !important;
   }
 
   .stat-number {
-    font-size: 1.4rem !important;
+    font-size: 1.35rem !important;
+    font-weight: 800 !important;
+    display: block !important;
   }
 
   .stat-label {
-    font-size: 0.7rem !important;
+    font-size: 0.68rem !important;
     line-height: 1.2 !important;
+    color: var(--text-muted) !important;
+    margin-top: 0.2rem !important;
+    display: block !important;
   }
 
-  /* Hero 3D Card & Avatar Mobile Fix */
+  /* Hero 3D Card & Avatar (Clean Center Corridor, Zero Body Overlap) */
   .hero__visual-wrapper {
     width: 100% !important;
     display: flex !important;
     justify-content: center !important;
-    padding: 0 !important;
+    padding: 0.5rem 0 !important;
     overflow: visible !important;
   }
 
   .hero__card-3d {
     width: 100% !important;
-    max-width: 320px !important;
-    aspect-ratio: 1 / 1.22 !important;
+    max-width: 285px !important;
+    aspect-ratio: 1 / 1.18 !important;
     border-radius: 1.75rem !important;
-    padding: 0.75rem !important;
+    padding: 0.65rem !important;
     margin: 0 auto !important;
     position: relative !important;
     overflow: visible !important;
   }
 
   .avatar-glow-ring {
-    width: 220px !important;
-    height: 220px !important;
+    width: 210px !important;
+    height: 210px !important;
     filter: blur(35px) !important;
   }
 
   .hero__avatar-img {
-    width: 90% !important;
-    height: 92% !important;
+    width: 88% !important;
+    height: 94% !important;
     margin-bottom: 2.2rem !important;
   }
 
-  /* Floating Tech Badges (Contained Inside Card - No Screen Overflow) */
+  /* Floating Tech Badges (Balanced Offsets, Clean Clearance, No Edge Cutoff) */
   .floating-chip {
-    padding: 0.32rem 0.65rem !important;
-    font-size: 0.72rem !important;
-    gap: 0.35rem !important;
+    padding: 0.28rem 0.55rem !important;
+    font-size: 0.68rem !important;
+    gap: 0.3rem !important;
     border-radius: 999px !important;
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.55) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+    white-space: nowrap !important;
+    max-width: 125px !important;
   }
 
   .floating-chip i {
-    font-size: 0.95rem !important;
+    font-size: 0.9rem !important;
   }
 
   .floating-chip.chip-1 {
-    top: 2% !important;
-    left: 0% !important;
+    top: 6% !important;
+    left: -14px !important;
   }
 
   .floating-chip.chip-2 {
-    top: 4% !important;
-    right: 0% !important;
+    top: 8% !important;
+    right: -14px !important;
   }
 
   .floating-chip.chip-3 {
-    top: 34% !important;
-    left: -2px !important;
+    top: 40% !important;
+    left: -18px !important;
   }
 
   .floating-chip.chip-4 {
-    top: 36% !important;
-    right: -2px !important;
+    top: 42% !important;
+    right: -18px !important;
   }
 
   .floating-chip.chip-5 {
-    top: 66% !important;
-    left: 0% !important;
+    top: 70% !important;
+    left: -10px !important;
   }
 
   .floating-chip.chip-6 {
-    top: 66% !important;
-    right: 0% !important;
+    top: 70% !important;
+    right: -10px !important;
   }
 
   .avatar-bottom-badge {
-    bottom: 0.45rem !important;
-    width: 94% !important;
-    padding: 0.55rem 0.8rem !important;
+    bottom: 0.5rem !important;
+    width: 92% !important;
+    padding: 0.55rem 0.75rem !important;
     border-radius: 0.85rem !important;
   }
 
@@ -2443,22 +2495,24 @@ body:hover .mouse-spotlight {
   }
 
   .bento-card {
-    padding: 1.35rem !important;
+    padding: 1.25rem !important;
     border-radius: 1.25rem !important;
   }
 
   .bento-title {
-    font-size: 1.2rem !important;
+    font-size: 1.15rem !important;
   }
 
   .bento-text {
-    font-size: 0.9rem !important;
+    font-size: 0.88rem !important;
     line-height: 1.6 !important;
   }
 
   .code-preview-window {
-    font-size: 0.72rem !important;
+    max-height: 240px !important;
+    overflow-y: auto !important;
     overflow-x: auto !important;
+    font-size: 0.72rem !important;
     -webkit-overflow-scrolling: touch !important;
   }
 
@@ -2474,44 +2528,57 @@ body:hover .mouse-spotlight {
     font-size: 0.8rem !important;
   }
 
-  /* Skills Section Mobile */
+  /* Skills Section Mobile (Executive 2-Column Matrix) */
   .skills__category-tabs {
     gap: 0.4rem !important;
-    margin-bottom: 1.75rem !important;
+    margin-bottom: 1.5rem !important;
   }
 
   .skill-tab-btn {
-    padding: 0.45rem 0.95rem !important;
+    padding: 0.45rem 0.9rem !important;
     font-size: 0.78rem !important;
     gap: 0.35rem !important;
   }
 
   .skills__grid {
-    grid-template-columns: 1fr !important;
-    gap: 0.85rem !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.65rem !important;
   }
 
   .skill-card {
-    padding: 1.1rem !important;
-    gap: 0.85rem !important;
+    padding: 0.85rem 0.75rem !important;
+    gap: 0.6rem !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
     border-radius: 1rem !important;
   }
 
   .skill-card-icon {
-    width: 44px !important;
-    height: 44px !important;
-    font-size: 1.45rem !important;
-    border-radius: 12px !important;
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 1.35rem !important;
+    border-radius: 10px !important;
   }
 
   .skill-card-name {
-    font-size: 0.98rem !important;
+    font-size: 0.88rem !important;
+    margin-bottom: 0.15rem !important;
+  }
+
+  .skill-card-badge {
+    font-size: 0.68rem !important;
+  }
+
+  .skill-meter {
+    height: 4px !important;
+    margin-top: 0.4rem !important;
   }
 
   /* Projects Section Mobile */
   .work__filters {
     gap: 0.4rem !important;
-    margin-bottom: 1.75rem !important;
+    margin-bottom: 1.5rem !important;
   }
 
   .work__filter-btn {
@@ -2642,7 +2709,7 @@ body:hover .mouse-spotlight {
   /* Footer Mobile (Clears Bottom Floating Dock) */
   .footer {
     padding-top: 3.5rem !important;
-    padding-bottom: 5.8rem !important; /* Essential clearance for floating dock */
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px)) !important;
   }
 
   .footer__top {
@@ -2713,27 +2780,31 @@ body:hover .mouse-spotlight {
   }
 
   .hero__card-3d {
-    max-width: 290px !important;
+    max-width: 260px !important;
   }
 
   .floating-chip {
-    padding: 0.28rem 0.5rem !important;
-    font-size: 0.68rem !important;
+    padding: 0.25rem 0.45rem !important;
+    font-size: 0.64rem !important;
   }
 
-  .floating-chip.chip-1 { left: 0% !important; }
-  .floating-chip.chip-2 { right: 0% !important; }
-  .floating-chip.chip-3 { left: 0 !important; }
-  .floating-chip.chip-4 { right: 0 !important; }
-  .floating-chip.chip-5 { left: 0% !important; }
-  .floating-chip.chip-6 { right: 0% !important; }
+  .floating-chip.chip-1 { left: -8px !important; }
+  .floating-chip.chip-2 { right: -8px !important; }
+  .floating-chip.chip-3 { left: -10px !important; }
+  .floating-chip.chip-4 { right: -10px !important; }
+  .floating-chip.chip-5 { left: -6px !important; }
+  .floating-chip.chip-6 { right: -6px !important; }
 
   .stat-number {
-    font-size: 1.25rem !important;
+    font-size: 1.2rem !important;
   }
 
   .stat-label {
-    font-size: 0.65rem !important;
+    font-size: 0.64rem !important;
+  }
+
+  .skills__grid {
+    grid-template-columns: 1fr !important;
   }
 }
 
