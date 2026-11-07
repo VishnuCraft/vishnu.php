@@ -669,6 +669,17 @@ body:hover .mouse-spotlight {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+  position: fixed;
+  z-index: 1000;
+  transition: all var(--transition-normal);
+}
+
+@media (min-width: 768px) {
+  .nav__menu {
+    top: 1.15rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .nav__list {
@@ -751,32 +762,6 @@ body:hover .mouse-spotlight {
   transform: translateY(-2px);
 }
 
-/* Mobile Nav Bottom Bar */
-@media (max-width: 767px) {
-  .nav__menu {
-    position: fixed;
-    bottom: 1.15rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 2rem);
-    max-width: 380px;
-    z-index: 100;
-    padding: 0.35rem;
-  }
-
-  .nav__list {
-    justify-content: space-around;
-  }
-
-  .nav__link {
-    padding: 0.6rem;
-    font-size: 1.25rem;
-  }
-
-  .nav__link span {
-    display: none;
-  }
-}
 
 /*=============== BUTTONS ===============*/
 .btn {
@@ -2132,3 +2117,623 @@ body:hover .mouse-spotlight {
   flex-wrap: wrap;
   gap: 1rem;
 }
+
+/*===================================================================
+  COMPREHENSIVE MOBILE RESPONSIVE SUITE (iOS Safari & Android Chrome)
+  ===================================================================*/
+
+@media (max-width: 767px) {
+  /* Global viewport stability */
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+  }
+
+  .container {
+    padding-left: 1.15rem !important;
+    padding-right: 1.15rem !important;
+  }
+
+  .section {
+    padding: 3.75rem 0 2rem !important;
+  }
+
+  .section__header {
+    margin-bottom: 2rem !important;
+  }
+
+  .section__pill {
+    font-size: 0.72rem !important;
+    padding: 0.3rem 0.8rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .section__title {
+    font-size: 1.65rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .section__subtitle {
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Header & Navigation Bar */
+  .header {
+    padding: 0.75rem 0 !important;
+  }
+
+  .nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+
+  .nav__brand {
+    gap: 0.5rem !important;
+  }
+
+  .nav__logo-wrapper {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 9px !important;
+  }
+
+  .nav__logo-text {
+    font-size: 1.05rem !important;
+  }
+
+  .nav__logo-badge {
+    font-size: 0.65rem !important;
+    padding: 0.1rem 0.35rem !important;
+    margin-left: 0.25rem !important;
+  }
+
+  .nav__cta-btn {
+    display: none !important;
+  }
+
+  .theme-toggle-btn {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 1.1rem !important;
+    border-radius: 10px !important;
+  }
+
+  /* Sleek Floating Bottom Navigation Dock (App Dock Style) */
+  .nav__menu {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 1.15rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: calc(100% - 2.25rem) !important;
+    max-width: 360px !important;
+    z-index: 1000 !important;
+    padding: 0.35rem 0.45rem !important;
+    background: rgba(10, 16, 32, 0.94) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65) !important;
+    border-radius: 999px !important;
+  }
+
+  body.light-theme .nav__menu {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border-color: rgba(99, 102, 241, 0.25) !important;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15) !important;
+  }
+
+  .nav__list {
+    justify-content: space-around !important;
+    gap: 0 !important;
+    width: 100% !important;
+  }
+
+  .nav__link {
+    padding: 0.6rem !important;
+    font-size: 1.25rem !important;
+    border-radius: 999px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .nav__link span {
+    display: none !important;
+  }
+
+  /* Hero Section */
+  .hero {
+    min-height: auto !important;
+    padding-top: 5.25rem !important;
+    padding-bottom: 2.75rem !important;
+  }
+
+  .hero__container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2.25rem !important;
+  }
+
+  .hero__content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  .status-pill {
+    font-size: 0.72rem !important;
+    padding: 0.35rem 0.75rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .hero__greeting {
+    font-size: 0.82rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .hero__name {
+    font-size: 2.25rem !important;
+    line-height: 1.15 !important;
+    margin-bottom: 0.65rem !important;
+  }
+
+  .hero__role-box {
+    font-size: 1.1rem !important;
+    min-height: 2.2rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .hero__bio {
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .hero__actions {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.65rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .hero__actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 0.8rem 1.25rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .hero__stats {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+    padding-top: 1.25rem !important;
+    border-top: 1px solid var(--border-subtle) !important;
+  }
+
+  .stat-item {
+    text-align: center !important;
+  }
+
+  .stat-number {
+    font-size: 1.4rem !important;
+  }
+
+  .stat-label {
+    font-size: 0.7rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Hero 3D Card & Avatar Mobile Fix */
+  .hero__visual-wrapper {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .hero__card-3d {
+    width: 100% !important;
+    max-width: 320px !important;
+    aspect-ratio: 1 / 1.22 !important;
+    border-radius: 1.75rem !important;
+    padding: 0.75rem !important;
+    margin: 0 auto !important;
+    position: relative !important;
+    overflow: visible !important;
+  }
+
+  .avatar-glow-ring {
+    width: 220px !important;
+    height: 220px !important;
+    filter: blur(35px) !important;
+  }
+
+  .hero__avatar-img {
+    width: 90% !important;
+    height: 92% !important;
+    margin-bottom: 2.2rem !important;
+  }
+
+  /* Floating Tech Badges (Contained Inside Card - No Screen Overflow) */
+  .floating-chip {
+    padding: 0.32rem 0.65rem !important;
+    font-size: 0.72rem !important;
+    gap: 0.35rem !important;
+    border-radius: 999px !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.55) !important;
+  }
+
+  .floating-chip i {
+    font-size: 0.95rem !important;
+  }
+
+  .floating-chip.chip-1 {
+    top: 2% !important;
+    left: 0% !important;
+  }
+
+  .floating-chip.chip-2 {
+    top: 4% !important;
+    right: 0% !important;
+  }
+
+  .floating-chip.chip-3 {
+    top: 34% !important;
+    left: -2px !important;
+  }
+
+  .floating-chip.chip-4 {
+    top: 36% !important;
+    right: -2px !important;
+  }
+
+  .floating-chip.chip-5 {
+    top: 66% !important;
+    left: 0% !important;
+  }
+
+  .floating-chip.chip-6 {
+    top: 66% !important;
+    right: 0% !important;
+  }
+
+  .avatar-bottom-badge {
+    bottom: 0.45rem !important;
+    width: 94% !important;
+    padding: 0.55rem 0.8rem !important;
+    border-radius: 0.85rem !important;
+  }
+
+  .avatar-badge-info h4 {
+    font-size: 0.82rem !important;
+  }
+
+  .avatar-badge-info p {
+    font-size: 0.68rem !important;
+  }
+
+  .avatar-badge-icon {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.95rem !important;
+  }
+
+  /* About Bento Grid Mobile */
+  .bento-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.15rem !important;
+  }
+
+  .bento-col-8, .bento-col-4, .bento-col-6 {
+    grid-column: span 1 !important;
+  }
+
+  .bento-card {
+    padding: 1.35rem !important;
+    border-radius: 1.25rem !important;
+  }
+
+  .bento-title {
+    font-size: 1.2rem !important;
+  }
+
+  .bento-text {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .code-preview-window {
+    font-size: 0.72rem !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .code-content {
+    padding: 0.75rem !important;
+    white-space: pre !important;
+    overflow-x: auto !important;
+    font-size: 0.72rem !important;
+  }
+
+  .fact-item {
+    padding: 0.55rem 0.75rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Skills Section Mobile */
+  .skills__category-tabs {
+    gap: 0.4rem !important;
+    margin-bottom: 1.75rem !important;
+  }
+
+  .skill-tab-btn {
+    padding: 0.45rem 0.95rem !important;
+    font-size: 0.78rem !important;
+    gap: 0.35rem !important;
+  }
+
+  .skills__grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
+  }
+
+  .skill-card {
+    padding: 1.1rem !important;
+    gap: 0.85rem !important;
+    border-radius: 1rem !important;
+  }
+
+  .skill-card-icon {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.45rem !important;
+    border-radius: 12px !important;
+  }
+
+  .skill-card-name {
+    font-size: 0.98rem !important;
+  }
+
+  /* Projects Section Mobile */
+  .work__filters {
+    gap: 0.4rem !important;
+    margin-bottom: 1.75rem !important;
+  }
+
+  .work__filter-btn {
+    padding: 0.45rem 0.95rem !important;
+    font-size: 0.78rem !important;
+  }
+
+  .projects__grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .project-card {
+    border-radius: 1.25rem !important;
+  }
+
+  .project-card-body {
+    padding: 1.25rem !important;
+  }
+
+  .project-card-title {
+    font-size: 1.2rem !important;
+  }
+
+  .project-card-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .tech-tag {
+    font-size: 0.7rem !important;
+    padding: 0.2rem 0.55rem !important;
+  }
+
+  .project-card-footer {
+    padding-top: 1rem !important;
+  }
+
+  /* Services Section Mobile */
+  .services__grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .service-card {
+    padding: 1.5rem 1.25rem !important;
+    border-radius: 1.25rem !important;
+  }
+
+  .service-icon-box {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 1.5rem !important;
+    border-radius: 12px !important;
+    margin-bottom: 1.1rem !important;
+  }
+
+  .service-title {
+    font-size: 1.15rem !important;
+  }
+
+  .service-desc {
+    font-size: 0.88rem !important;
+    margin-bottom: 1.1rem !important;
+  }
+
+  /* Testimonials Mobile */
+  .testimonial-card {
+    padding: 1.5rem 1.25rem !important;
+    border-radius: 1.25rem !important;
+  }
+
+  .testimonial-quote {
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .author-avatar {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  /* Contact Section Mobile */
+  .contact__container {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .contact-method-card {
+    padding: 1.1rem 1rem !important;
+    border-radius: 1rem !important;
+    gap: 0.75rem !important;
+  }
+
+  .contact-method-icon {
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 1.35rem !important;
+    border-radius: 10px !important;
+  }
+
+  .contact-method-value {
+    font-size: 0.9rem !important;
+    word-break: break-all !important;
+  }
+
+  .contact-btn-action {
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .contact-form-card {
+    padding: 1.35rem !important;
+    border-radius: 1.25rem !important;
+  }
+
+  /* iOS Safari Zoom Prevention for Form Inputs */
+  .form-input, .form-textarea {
+    font-size: 16px !important;
+    padding: 0.85rem 1rem !important;
+  }
+
+  .contact-form .btn {
+    width: 100% !important;
+  }
+
+  /* Footer Mobile (Clears Bottom Floating Dock) */
+  .footer {
+    padding-top: 3.5rem !important;
+    padding-bottom: 5.8rem !important; /* Essential clearance for floating dock */
+  }
+
+  .footer__top {
+    margin-bottom: 2rem !important;
+    gap: 1.15rem !important;
+  }
+
+  .footer__brand {
+    font-size: 1.45rem !important;
+  }
+
+  .footer__tagline {
+    font-size: 0.88rem !important;
+  }
+
+  .footer__bottom {
+    padding-top: 1.5rem !important;
+    text-align: center !important;
+    gap: 0.85rem !important;
+  }
+
+  /* Modal Mobile */
+  .modal-overlay {
+    padding: 1rem !important;
+  }
+
+  .modal-content {
+    max-height: 85vh !important;
+    border-radius: 1.25rem !important;
+  }
+
+  .modal-banner {
+    height: 170px !important;
+  }
+
+  .modal-body {
+    padding: 1.25rem !important;
+  }
+
+  .modal-title {
+    font-size: 1.35rem !important;
+  }
+
+  .modal-actions {
+    flex-direction: column !important;
+    gap: 0.65rem !important;
+  }
+
+  .modal-actions .btn {
+    width: 100% !important;
+  }
+
+  /* Floating Toast Notification on Mobile */
+  .toast-notification {
+    left: 1rem !important;
+    right: 1rem !important;
+    bottom: 5.5rem !important;
+    justify-content: center !important;
+    font-size: 0.8rem !important;
+    padding: 0.75rem 1rem !important;
+  }
+}
+
+/* Extra small devices (iPhone SE, Galaxy S compact, < 375px) */
+@media (max-width: 374px) {
+  .hero__name {
+    font-size: 2rem !important;
+  }
+
+  .hero__card-3d {
+    max-width: 290px !important;
+  }
+
+  .floating-chip {
+    padding: 0.28rem 0.5rem !important;
+    font-size: 0.68rem !important;
+  }
+
+  .floating-chip.chip-1 { left: 0% !important; }
+  .floating-chip.chip-2 { right: 0% !important; }
+  .floating-chip.chip-3 { left: 0 !important; }
+  .floating-chip.chip-4 { right: 0 !important; }
+  .floating-chip.chip-5 { left: 0% !important; }
+  .floating-chip.chip-6 { right: 0% !important; }
+
+  .stat-number {
+    font-size: 1.25rem !important;
+  }
+
+  .stat-label {
+    font-size: 0.65rem !important;
+  }
+}
+
