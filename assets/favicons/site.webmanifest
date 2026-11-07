@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Vishnu Kumawat Portfolio",
+    "short_name": "Vishnu.php",
     "icons": [
         {
             "src": "android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#a789d4",
-    "background_color": "#a789d4",
+    "theme_color": "#05070e",
+    "background_color": "#05070e",
     "display": "standalone"
 }

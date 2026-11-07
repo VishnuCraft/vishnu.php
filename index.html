@@ -5,749 +5,1135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Primary Meta Tags -->
+    <title>Vishnu Kumawat — Full-Stack Laravel, MERN & Mobile App Engineer</title>
+    <meta name="title" content="Vishnu Kumawat — Full-Stack Laravel, MERN & Mobile App Engineer">
+    <meta name="description" content="Portfolio of Vishnu Kumawat (4+ Years Experience). Full-Stack Engineer specializing in Laravel 11, PHP, WordPress (Custom Plugins & Themes), MERN Stack, React Native (iOS & Android), and Third-Party APIs.">
+    <meta name="keywords" content="Vishnu Kumawat, Vishnu PHP, Laravel Developer, React Native Developer, WordPress Custom Plugins, MERN Stack, Full Stack Developer, PHP Developer, Livewire, MySQL, Web Developer Portfolio">
+    <meta name="author" content="Vishnu Kumawat">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vishnuphp.vercel.app/">
+    <meta property="og:title" content="Vishnu Kumawat — Full-Stack Laravel, MERN & Mobile App Engineer">
+    <meta property="og:description" content="4+ Years of crafting scalable web applications, React Native mobile apps, WordPress custom plugins, and resilient backend systems.">
+    <meta property="og:image" content="assets/img/cowork-library.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://vishnuphp.vercel.app/">
+    <meta property="twitter:title" content="Vishnu Kumawat — Full-Stack Laravel, MERN & Mobile App Engineer">
+    <meta property="twitter:description" content="4+ Years of crafting scalable web applications, React Native mobile apps, WordPress custom plugins, and resilient backend systems.">
+    <meta property="twitter:image" content="assets/img/cowork-library.jpg">
+
     <!--=============== FAVICON ===============-->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicons/site.webmanifest">
-    <link rel="mask-icon" href="assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="shortcut icon" href="assets/favicons/favicon.ico">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
-    <meta name="theme-color" content="#a789d4">
+    <meta name="theme-color" content="#05070e">
 
     <!--=============== BOXICONS ===============-->
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <!--=============== SWIPER CSS ===============-->
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
 
-    <!--=============== CSS ===============-->
+    <!--=============== STYLES CSS ===============-->
     <link rel="stylesheet" href="assets/css/styles.css">
-
-    <title> Vishnu's Portfolio </title>
 </head>
 
 <body>
+    <!--=============== BACKGROUND AUDIO (SLOW AMBIENT SOUND) ===============-->
+    <audio id="bg-audio" loop preload="auto" autoplay playsinline src="assets/music/background-music.mp3"></audio>
+
+    <!--=============== AMBIENT BACKGROUND & MESH ===============-->
+    <canvas id="ambient-canvas"></canvas>
+    <div class="bg-mesh-static"></div>
+    <div class="bg-grid"></div>
+    <div class="mouse-spotlight"></div>
+    <div class="cursor-dot"></div>
+
+    <!--=============== FLOATING TOAST ===============-->
+    <div class="toast-notification" id="toast-notification">
+        <i class='bx bx-check-shield' style="color: #34d399; font-size: 1.25rem;"></i>
+        <span id="toast-message">Notification message</span>
+    </div>
+
     <!--=============== HEADER ===============-->
     <header class="header" id="header">
-        <nav class="nav container">
-            <a href="#" class="nav__logo">Vishnu</a>
+        <div class="container nav">
+            <!-- Brand Logo -->
+            <a href="#home" class="nav__brand">
+                <div class="nav__logo-wrapper">
+                    <img src="assets/img/vishnu-logo.jpg" alt="Vishnu.php Logo" class="nav__logo-img">
+                </div>
+                <div>
+                    <span class="nav__logo-text">Vishnu</span>
+                    <span class="nav__logo-badge">.php</span>
+                </div>
+            </a>
 
-            <div class="nav__menu">
+            <!-- Floating Pill Menu -->
+            <nav class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li class="nav__item ">
-                        <a href="#home" class="nav__link">
-                            <i class='bx bx-home'></i>
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link" id="nav-home">
+                            <i class='bx bx-home-alt'></i>
+                            <span>Home</span>
                         </a>
                     </li>
-
-                    <li class="nav__item ">
-                        <a href="#about" class="nav__link">
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link" id="nav-about">
                             <i class='bx bx-user'></i>
+                            <span>About</span>
                         </a>
                     </li>
-
                     <li class="nav__item">
-                        <a href="#skills" class="nav__link">
-                            <i class='bx bx-book'></i>
+                        <a href="#skills" class="nav__link" id="nav-skills">
+                            <i class='bx bx-code-alt'></i>
+                            <span>Skills</span>
                         </a>
                     </li>
-
                     <li class="nav__item">
-                        <a href="#work" class="nav__link">
+                        <a href="#work" class="nav__link" id="nav-work">
                             <i class='bx bx-briefcase-alt-2'></i>
+                            <span>Work</span>
                         </a>
                     </li>
-
                     <li class="nav__item">
-                        <a href="#contact" class="nav__link">
-                            <i class='bx bx-message-square-dots'></i>
+                        <a href="#services" class="nav__link" id="nav-services">
+                            <i class='bx bx-layer'></i>
+                            <span>Services</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link" id="nav-contact">
+                            <i class='bx bx-message-rounded-dots'></i>
+                            <span>Contact</span>
                         </a>
                     </li>
                 </ul>
-            </div>
+            </nav>
 
-            <!--=============== theme change button ===============-->
-            <i class='bx bx-moon change-theme change-theme-button' id="theme-button"></i>
+            <!-- Actions (Theme, CTA) -->
+            <div class="nav__actions">
+                <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle Theme">
+                    <i class='bx bx-moon'></i>
+                </button>
 
-        </nav>
-    </header>
-
-    <!--=============== MAIN ===============-->
-    <main class="main">
-        <!--=============== HOME ===============-->
-        <section class="home section" id="home">
-            <div class="home__container container grid">
-                <div class="home__data">
-                    <span class="home__greeting">Hello, I'm</span>
-                    <h1 class="home__name">Vishnu Kumawat</h1> 
-                    <!-- Change the name And additional details -->
-<!-- MAKE NEW CLASS  -->
-<div class="newcontainer">
-<div class="static-text"><span>I AM </span></div>
-
-<div class="dynamic-text">
-<li><span> PROGRAMMER</span></li>
-<li><span> PHP DEVELOPER</span></li>
-<li><span> UX UI DEVELOPER</span></li>
-<li><span> FREELANCER</span></li>
-
-</div>
-
-</div>
-<!-- NEW CODE HERE  -->
-
-                    <h3 class="home__education">Web & Mobile App Developer</h3>
-
-                    <div class="home__button">
-                        <a download="" href="assets/pdf/" class="button button--ghost">
-                            Download CV
-                        </a>
-
-                        <a href="#about" class="button">About</a>
-                    </div>
-                </div>
-
-                <div class="home__handle">
-                    <img src="assets/img/vishnu-roh-admin-headshot.png" alt="" class="home__img">
-                </div>
-
-                <div class="home__social">
-                    <a href="https://www.linkedin.com/in/vishnu-kumawat-php/" target="_blank" class="home__social-link">
-                        <i class='bx bxl-linkedin'></i>
-                    </a>
-                    <a href="https://github.com/VishnuCraft" target="_blank" class="home__social-link">
-                        <i class='bx bxl-github'></i>
-                    </a>
-                    <a href="https://dribbble.com/" target="_blank" class="home__social-link">
-                        <i class='bx bxl-dribbble'></i>
-                    </a>
-                </div>
-
-                <a href="#about" class="home__scroll">
-                    <i class='bx bx-mouse home__scroll-icon'></i>
-                    <span class="home__scroll-name">Scroll Down</span>
+                <a href="#contact" class="nav__cta-btn">
+                    <span>Let's Talk</span>
+                    <i class='bx bx-right-arrow-alt'></i>
                 </a>
             </div>
+        </div>
+    </header>
 
-        </section>
-
-        <!--=============== ABOUT ===============-->
-        <section class="about section" id="about">
-            <span class="section__subtitle">My Intro</span>
-            <h2 class="section__title">About Me</h2>
-
-            <div class="about__container container grid">
-                <img src="assets/img/vishnu.jpeg" alt="" class="about__img">
-
-                <div class="about__data">
-                    <div class="about__info">
-                        <div class="about__box">
-                            <i class='bx bx-award about__icon'></i>
-                            <h3 class="about__title">Experience</h3>
-                            <span class="about__subtitle">Beginner level</span>
-                        </div>
-                        <div class="about__box">
-                            <i class='bx bx-briefcase-alt about__icon'></i>
-                            <h3 class="about__title">Completed</h3>
-                            <span class="about__subtitle">80+ Projects</span>
-                        </div>
-                        <div class="about__box">
-                            <i class='bx bx-support about__icon'></i>
-                            <h3 class="about__title">Support</h3>
-                            <span class="about__subtitle">Online 24/7</span>
-                        </div>
+    <!--=============== MAIN CONTENT ===============-->
+    <main class="main">
+        <!--=============== HERO SECTION ===============-->
+        <section class="hero" id="home">
+            <div class="container hero__container">
+                <!-- Left: Info & Details -->
+                <div class="hero__content">
+                    <div class="status-pill">
+                        <span class="pulse-dot"></span>
+                        <span>Available for Full-Time & Freelance Roles</span>
                     </div>
 
-                    <p class="about__description">
-                        A self-Paced Programmer .I Do Android Development Based On The Languages
-                         [ JAVA | XML | Kotlin ] Its My Passion And Profession.
-                        nl
-                         I create UI/UX with Amazing Eye-Catchy Graphic design
-                        I have enough knowledge and many clients are happy with the work i did.
+                    <span class="hero__greeting">// HELLO WORLD, I'M</span>
+                    <h1 class="hero__name">
+                        Vishnu <span class="hero__name-gradient">Kumawat</span>
+                    </h1>
+
+                    <div class="hero__role-box">
+                        <span class="hero__role-static">I build</span>
+                        <span class="hero__role-dynamic" id="hero-dynamic-text"></span>
+                    </div>
+
+                    <p class="hero__bio">
+                        Full-Stack Software Engineer with <strong>4+ Years of Experience</strong> specializing in 
+                        <strong>Laravel 11, PHP, WordPress (Custom Themes & Plugins), MERN Stack, and React Native (iOS & Android)</strong>. 
+                        Expert in third-party API integrations, database normalization, and high-performance interactive interfaces.
                     </p>
 
-                    <a href="#contact" class="button about__button-contact">Contact Me</a>
-                </div>
-            </div>
-        </section>
-
-        <!--=============== SKILLS ===============-->
-        <section class="skills section" id="skills">
-            <span class="section__subtitle">My Abilities</span>
-            <h2 class="section__title">My Skills</h2>
-
-            <div class="skills__container container grid">
-                <div class="skills__content">
-                    <h3 class="skills__title">MOBILE APP DEVELOPMENT</h3>
-
-                    <div class="skills__box">
-                        <div class="skills__group">
-                            <div class="skills__data">
-                                <i class='bx bxs-badge-check'></i>
-
-                                <div>
-                                    <h3 class="skills__name">XML</h3>
-                                    <span class="skills__level">Moderate</span>
-                                </div>
-                            </div>
-
-                            <div class="skills__data">
-                                <i class='bx bxs-badge-check'></i>
-
-                                <div>
-                                    <h3 class="skills__name">UI/UX</h3>
-                                    <span class="skills__level">Moderate</span>
-                                </div>
-                            </div>
-
-                            <div class="skills__data">
-                                <i class='bx bxs-badge-check'></i>
-
-                                <div>
-                                    <h3 class="skills__name">JAVA</h3>
-                                    <span class="skills__level">Moderate</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="skills__group">
-                            <div class="skills__data">
-                                <i class='bx bxs-badge-check'></i>
-
-                                <div>
-                                    <h3 class="skills__name">KOTLIN</h3>
-                                    <span class="skills__level">Begginer</span>
-                                </div>
-                            </div>
-
-                            <div class="skills__data">
-                                <i class='bx bxs-badge-check'></i>
-
-                                <div>
-                                    <h3 class="skills__name">React Native</h3>
-                                    <span class="skills__level">Moderate</span>
-                                </div>
-                            </div>
-
-                            <div class="skills__data">
-                                <i class='bx bxs-badge-check'></i>
-
-                                <div>
-                                    <h3 class="skills__name">Git</h3>
-                                    <span class="skills__level">Moderate</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skills__content">
-                    <h3 class="skills__title">WEB Development</h3>
-
-                    <div class="skills__box">
-                        <div class="skills__group">
-                            <div class="skills__data">
-                                <i class='bx bxs-badge-check'></i>
-
-                                <div>
-                                    <h3 class="skills__name">HTML</h3>
-                                    <span class="skills__level">Moderate</span>
-                                </div>
-                            </div>
-
-
-                            <div class="skills__data">
-                                <i class='bx bxs-badge-check'></i>
-
-                                <div>
-                                    <h3 class="skills__name">PHP</h3>
-                                    <span class="skills__level">Moderate</span>
-                                </div>
-                            </div>
-
-                            <div class="skills__data">
-                                <i class='bx bxs-badge-check'></i>
-
-                                <div>
-                                    <h3 class="skills__name">Wordpress</h3>
-                                    <span class="skills__level">Moderate</span>
-                                </div>
-                            </div>
-                            <div class="skills__data">
-                                <i class='bx bxs-badge-check'></i>
-
-                                <div>
-                                    <h3 class="skills__name">Mern</h3>
-                                    <span class="skills__level">Moderate</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="skills__group">
-                            <div class="skills__data">
-                                <i class='bx bxs-badge-check'></i>
-
-                                <div>
-                                    <h3 class="skills__name">MySql</h3>
-                                    <span class="skills__level">Beginner</span>
-                                </div>
-                            </div>
-                            <div class="skills__data">
-                                <i class='bx bxs-badge-check'></i>
-
-                                <div>
-                                    <h3 class="skills__name">Mongo DB</h3>
-                                    <span class="skills__level">Beginner</span>
-                                </div>
-                            </div>
-
-
-                            <div class="skills__data">
-                                <i class='bx bxs-badge-check'></i>
-
-                                <div>
-                                    <h3 class="skills__name">JavaScript</h3>
-                                    <span class="skills__level">Beginner</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-        </section>
-
-        <!--=============== SERVICES ===============-->
-        <section class="services section">
-            <span class="section__subtitle">My Services</span>
-            <h2 class="section__title">What I CAN</h2>
-
-            <div class="services__container container grid">
-                <div class="services__card">
-                    <div class="serv">
-                        <h3 class="services__title">Product <br> Designing</h3>
-
-                        <span class="services__button">
-                            See More <i class='bx bx-right-arrow services__icon'></i>
-                        </span>
-                    </div>
-
-
-                    <div class="services__modal">
-                        <div class="services__modal-content">
-                            <i class='bx bx-x services__modal-close'></i>
-
-                            <h3 class="services__modal-title">Product Designing</h3>
-
-                            <p class="services__modal-description">
-                                I design and develop the consumer products with creative ability and
-                                hands-on approach which stisfies the 'customers' needs and trends.
-                            </p>
-
-                            <ul class="services__modal-list">
-                                <li class="services__modal-item">
-                                    <i class='bx bx-check-circle'></i>
-                                    <p class="services__modal-info">
-                                        I develop the - TRENDING UI/UX - Having the Eye-Catchy Theme.
-                
-                                    </p>
-                                </li>
-
-                                <li class="services__modal-item">
-                                    <i class='bx bx-check-circle'></i>
-                                    <p class="services__modal-info">
-                                        Web Page design Front-end & Back-end
-                                    </p>
-                                </li>
-
-                                <li class="services__modal-item">
-                                    <i class='bx bx-check-circle'></i>
-                                    <p class="services__modal-info">
-                                        MS OFFICE CERTIFIDE COMPLETION
-                                    </p>
-                                </li>
-
-                                <li class="services__modal-item">
-                                    <i class='bx bx-check-circle'></i>
-                                    <p class="services__modal-info">
-                                        I create the VECTOR based GRAPHIC DESIGNING.
-                                    </p>
-                                </li>
-
-                                <li class="services__modal-item">
-                                    <i class='bx bx-check-circle'></i>
-                                    <p class="services__modal-info">
-                                        Create Modern - Trendy Illustrations.
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="services__card">
-                    <h3 class="services__title">UI/UX <br> Designing</h3>
-
-                    <span class="services__button">
-                        See More <i class='bx bx-right-arrow services__icon'></i>
-                    </span>
-
-                    <div class="services__modal">
-                        <div class="services__modal-content">
-                            <i class='bx bx-x services__modal-close'></i>
-
-                            <h3 class="services__modal-title">UI/UX Designing</h3>
-
-                            <p class="services__modal-description">
-                                I can design Some really Interactive UI designs . With eye catchy Illustrations and SVGs.
-                                 I have the creative ability and
-                                hands-on approach which stisfies the 'customers' and Market needs. 
-                            </p>
-
-                            <ul class="services__modal-list">
-                                <li class="services__modal-item">
-                                    <i class='bx bx-check-circle'></i>
-                                    <p class="services__modal-info">
-                                        I develop the user interfaces {XML | JAVA }.
-                                    </p>
-                                </li>
-
-                                <li class="services__modal-item">
-                                    <i class='bx bx-check-circle'></i>
-                                    <p class="services__modal-info">
-                                        Web Page design and development. {HTML:5 | CSS:3 }
-                                    </p>
-                                </li>
-
-                                <li class="services__modal-item">
-                                    <i class='bx bx-check-circle'></i>
-                                    <p class="services__modal-info">
-                                        I create the UX element interactions.
-                                    </p>
-                                </li>
-
-                                <li class="services__modal-item">
-                                    <i class='bx bx-check-circle'></i>
-                                    <p class="services__modal-info">
-                                     I create VECTOR BASED LOGO.
-                                    </p>
-                                </li>
-
-                                <li class="services__modal-item">
-                                    <i class='bx bx-check-circle'></i>
-                                    <p class="services__modal-info">
-                                        Create modern 3-D Illustrations.
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="services__card">
-                    <h3 class="services__title">Visual <br> Designing</h3>
-
-                    <span class="services__button">
-                        See More <i class='bx bx-right-arrow services__icon'></i>
-                    </span>
-
-                    <div class="services__modal">
-                        <div class="services__modal-content">
-                            <i class='bx bx-x services__modal-close'></i>
-
-                            <h3 class="services__modal-title">Visual Designing</h3>
-
-                            <p class="services__modal-description">
-                                I design and develop the consumer products with creative ability and
-                                hands-on approach which stisfies the customers' and markets' needs and trends.
-                            </p>
-
-                            <ul class="services__modal-list">
-                                <li class="services__modal-item">
-                                    <i class='bx bx-check-circle'></i>
-                                    <p class="services__modal-info">
-                                       UI / UX
-                                    </p>
-                                </li>
-
-                                <li class="services__modal-item">
-                                    <i class='bx bx-check-circle'></i>
-                                    <p class="services__modal-info">
-                                        Interactive Element Designs.
-                                    </p>
-                                </li>
-
-                                <li class="services__modal-item">
-                                    <i class='bx bx-check-circle'></i>
-                                    <p class="services__modal-info">
-                                        New Trendy Design Recommendations.
-                                    </p>
-                                </li>
-
-                                <li class="services__modal-item">
-                                    <i class='bx bx-check-circle'></i>
-                                    <p class="services__modal-info">
-                                        I develop Responsive Layouts.
-                                    </p>
-                                </li>
-
-                                <li class="services__modal-item">
-                                    <i class='bx bx-check-circle'></i>
-                                    <p class="services__modal-info">
-                                        CAN DESIGN Layouts Via HARD-CODE
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!--=============== WORK ===============-->
-        <section class="work section" id="work">
-            <span class="section__subtitle">My Portfolio</span>
-            <h2 class="section__title">Recent Works</h2>
-
-            <div class="work__filters">
-                <span class="work__item active-work" data-filter='all'>All</span>
-                <span class=" work__item" data-filter='.web'>App</span>
-                <span class=" work__item" data-filter='.movil'>Web</span>
-                <span class=" work__item" data-filter='.design'>Design</span>
-            </div>
-
-            <div class="work__container container grid">
-                <div class="work__card mix web">
-                    <img src="assets/img/work1.png" alt="" class="work__img">
-
-                    <h3 class="work__title">Graphic Design</h3>
-
-                    <a href="assets/css/work1demo/HAnd on I.png" class="work__button">
-                        Demo <i class='bx bx-right-arrow work__icon'></i>
-                    </a>
-                </div>
-
-                <div class="work__card mix movil">
-                    <img src="assets/img/work2.png" alt="" class="work__img">
-
-                    <h3 class="work__title">Presentation Design</h3>
-
-                    <a href="#" class="work__button">
-                        Demo <i class='bx bx-right-arrow work__icon'></i>
-                    </a>
-                </div>
-
-                <div class="work__card mix design">
-                    <img src="assets/img/work3.png" alt="" class="work__img">
-
-                    <h3 class="work__title">UI Design</h3>
-
-                    <a href="#" class="work__button">
-                        Demo <i class='bx bx-right-arrow work__icon'></i>
-                    </a>
-                </div>
-
-                <div class="work__card mix web">
-                    <img src="assets/img/work4.png" alt="" class="work__img">
-
-                    <h3 class="work__title">Material Design</h3>
-
-                    <a href="#" class="work__button">
-                        Demo <i class='bx bx-right-arrow work__icon'></i>
-                    </a>
-                </div>
-
-                <div class="work__card mix movil">
-                    <img src="assets/img/work5.png" alt="" class="work__img">
-
-                    <h3 class="work__title">Post Design</h3>
-
-                    <a href="#" class="work__button">
-                        Demo <i class='bx bx-right-arrow work__icon'></i>
-                    </a>
-                </div>
-
-            </div>
-        </section>
-
-        <!--=============== TESTIMONIALS ===============-->
-        <section class="testimonial section">
-            <span class="section__subtitle">My clients say</span>
-            <h2 class="section__title">Testimonials</h2>
-
-            <div class="testimonial__container container swiper">
-                <div class="swiper-wrapper">
-                    <div class="testimonial__card swiper-slide">
-                        <img src="assets/img/testimonial1.jpg" alt="" class="testimonial__img">
-
-                        <h3 class="testimonial__name">COder_yash</h3>
-                        <p class="testimonial__description">
-                            A really good job, all aspects of the project were done well.
-                            Very creative and thoughtful. I was very impressed and would recommend this to anyone.
-                        </p>
-                    </div>
-
-                    <div class="testimonial__card swiper-slide">
-                        <img src="assets/img/testimonial2.jpg" alt="" class="testimonial__img">
-
-                        <h3 class="testimonial__name">Snake_gamer</h3>
-                        <p class="testimonial__description">
-                            my work has finished in time . I got the delievery of my product before the due date.I am so happy with the work, I can suggest him to you all. 
-                        </p>
-                    </div>
-
-                    <div class="testimonial__card swiper-slide">
-                        <img src="assets/img/testimonial3.jpg" alt="" class="testimonial__img">
-
-                        <h3 class="testimonial__name">Smoker_weed</h3>
-                        <p class="testimonial__description">
-A very humble and Supportive nature , very punctual to his work I got my product delievery at the time . I am very impressed and would recommend this to anyone.
-                        </p>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-
-        </section>
-
-        <!--=============== CONTACT ===============-->
-        <section class="contact section" id="contact">
-            <sapn class="section__subtitle">Get in touch</sapn>
-            <h3 class="section__title">Contact Me</h3>
-
-            <div class="contact__container container grid">
-                <div class="contact__content">
-                    <h3 class="contact__title contact__title-info">Talk to me</h3>
-
-                    <div class="contact__info">
-                        <div class="contact__card">
-                            <i class='bx bx-mail-send contact__card-icon'></i>
-                            <h3 class="contact__card-title">Email</h3>
-                            <span class="contact__card-data">ecmascript.php@gmail.com</span>
-
-                            <a href="mailto:ecmascript.php@gmail.com" target="_blank" class="contact__button">
-                                Write Me <i class='bx bx-right-arrow contact__button-icon'></i>
-                            </a>
-                        </div>
-
-                        <div class="contact__card">
-                            <i class='bx bxl-whatsapp contact__card-icon'></i>
-                            <h3 class="contact__card-title">Whatsapp</h3>
-                            <span class="contact__card-data">9783457008</span>
-
-                            <a href="https://api.whatsapp.com/send?phone=+919783457008&text=Hey there! Mr.Vishnu Kumawat  " target="_blank"
-                                class="contact__button">
-                                Write Me <i class='bx bx-right-arrow contact__button-icon'></i>
-                            </a>
-                        </div>
-
-                        <div class="contact__card">
-                            <i class='bx bxl-twitter contact__card-icon'></i>
-                            <h3 class="contact__card-title">Twitter</h3>
-                            <span class="contact__card-data">@vishnu_php</span>
-
-                            <a href="https://x.com/vishnu_php?s=21" target="_blank" class="contact__button">
-                                Write Me <i class='bx bx-right-arrow contact__button-icon'></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact__content">
-                    <h3 class="contact__title contact__title-form">Write Me your Message</h3>
-                     <!--=============== FORM START ===============-->
-                     <form name="messend"netlify>
-                    <form action="" class="contact__form">
-                        <div class="contact__form-div">
-                            <label for="" class="contact__form-tag">Name</label>
-                            <input type="text" placeholder="Enter name" class="contact__form-input">
-                        </div>
-
-                        <div class="contact__form-div">
-                            <label for="" class="contact__form-tag">Mail</label>
-                            <input type="text" placeholder="Enter email" class="contact__form-input">
-                        </div>
-
-                        <div class="contact__form-div contact__form-area">
-                            <label for="" class="contact__form-tag">Message</label>
-                            <textarea name="" id="" cols="30" rows="10" placeholder="Write your Message"
-                                class="contact__form-input "></textarea>
-                        </div>
-                        <button class="button">
-                            Send Message
+                    <div class="hero__actions">
+                        <a href="#work" class="btn btn-primary">
+                            <span>Explore Projects</span>
+                            <i class='bx bx-arrow-to-right'></i>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class='bx bx-paper-plane'></i>
+                            <span>Get In Touch</span>
+                        </a>
+                        <button class="btn btn-secondary" id="copy-email-btn" title="Click to copy email">
+                            <i class='bx bx-copy'></i>
+                            <span>Copy Email</span>
                         </button>
-                    </form>
-                   <!--=============== FORM END ===============-->
+                    </div>
+
+                    <!-- Hero Quick Stats -->
+                    <div class="hero__stats">
+                        <div class="stat-item">
+                            <span class="stat-number">4+</span>
+                            <span class="stat-label">Years of Craft</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">35+</span>
+                            <span class="stat-label">Projects Shipped</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Right: 3D Visual & Avatar (PERFECT SPACING - NO OVERLAPPING BADGES) -->
+                <div class="hero__visual-wrapper">
+                    <div class="hero__card-3d spotlight-card">
+                        <div class="avatar-glow-ring"></div>
+                        <img src="assets/img/vishnu-roh-admin-headshot.png" alt="Vishnu Kumawat" class="hero__avatar-img">
+
+                        <!-- Floating Tech Badges (Evenly Distributed, High Z-Index, Well Above Name Badge) -->
+                        <div class="floating-chip chip-1">
+                            <i class='bx bxl-meta'></i>
+                            <span>Laravel 11</span>
+                        </div>
+                        <div class="floating-chip chip-2">
+                            <i class='bx bxl-react'></i>
+                            <span>React Native</span>
+                        </div>
+                        <div class="floating-chip chip-3">
+                            <i class='bx bxl-wordpress'></i>
+                            <span>WordPress & Plugins</span>
+                        </div>
+                        <div class="floating-chip chip-4">
+                            <i class='bx bxl-nodejs'></i>
+                            <span>PHP & MERN</span>
+                        </div>
+                        <div class="floating-chip chip-5">
+                            <i class='bx bx-bolt-circle'></i>
+                            <span>Livewire 3</span>
+                        </div>
+                        <!-- MySQL & APIs: Positioned well above the bottom name badge so it NEVER hides -->
+                        <div class="floating-chip chip-6">
+                            <i class='bx bxs-data'></i>
+                            <span>MySQL & APIs</span>
+                        </div>
+
+                        <!-- Card Bottom Name Badge -->
+                        <div class="avatar-bottom-badge">
+                            <div class="avatar-badge-info">
+                                <h4>Vishnu Kumawat</h4>
+                                <p>@kumaw_atvishnu.php</p>
+                            </div>
+                            <div class="avatar-badge-icon">
+                                <i class='bx bx-check-shield'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--=============== ABOUT SECTION (BENTO GRID) ===============-->
+        <section class="about section" id="about">
+            <div class="container">
+                <div class="section__header">
+                    <div class="section__pill">
+                        <i class='bx bx-user-pin'></i>
+                        <span>About The Engineer</span>
+                    </div>
+                    <h2 class="section__title">4+ Years of Engineering High-Impact Digital Solutions</h2>
+                    <p class="section__subtitle">A deep dive into my development philosophy, technical foundations, and what drives my craft every single day.</p>
+                </div>
+
+                <!-- Bento Grid Layout -->
+                <div class="bento-grid">
+                    <!-- Bento Card 1: My Story (8 Cols) -->
+                    <div class="bento-col-8">
+                        <div class="bento-card spotlight-card">
+                            <div>
+                                <div class="bento-header">
+                                    <div class="bento-icon icon-purple">
+                                        <i class='bx bx-code-curly'></i>
+                                    </div>
+                                    <h3 class="bento-title">Versatile Full-Stack & Mobile Craftsmanship</h3>
+                                </div>
+                                <p class="bento-text">
+                                    With <strong>4+ years of professional engineering experience</strong>, I specialize in building end-to-end 
+                                    web architectures and cross-platform mobile solutions. My core foundation centers around <strong>PHP, Laravel 11, 
+                                    and Livewire 3</strong>, paired with strong expertise in the <strong>MERN stack</strong> and 
+                                    <strong>cross-platform mobile apps using React Native (iOS & Android)</strong>.
+                                </p>
+                                <p class="bento-text">
+                                    I have extensive mastery in the <strong>WordPress ecosystem</strong> — authoring <strong>custom plugins from scratch</strong>, 
+                                    crafting bespoke high-performance themes, and engineering complex <strong>third-party API integrations</strong> (payment gateways, 
+                                    CRM webhooks, automated notification pipelines, and RESTful microservices).
+                                </p>
+                            </div>
+
+                            <div style="display: flex; gap: 0.65rem; flex-wrap: wrap; margin-top: 1rem;">
+                                <span class="tech-tag">Laravel 11 & PHP 8</span>
+                                <span class="tech-tag">React Native (iOS/Android)</span>
+                                <span class="tech-tag">Custom WordPress Plugins</span>
+                                <span class="tech-tag">MERN Stack</span>
+                                <span class="tech-tag">Third-Party APIs</span>
+                                <span class="tech-tag">MySQL Optimization</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento Card 2: Quick Facts (4 Cols) -->
+                    <div class="bento-col-4">
+                        <div class="bento-card spotlight-card">
+                            <div>
+                                <div class="bento-header">
+                                    <div class="bento-icon icon-cyan">
+                                        <i class='bx bx-compass'></i>
+                                    </div>
+                                    <h3 class="bento-title">Quick Overview</h3>
+                                </div>
+                                <div class="quick-facts-list">
+                                    <div class="fact-item">
+                                        <span class="fact-label"><i class='bx bx-briefcase'></i> Experience</span>
+                                        <span class="fact-val" style="color: #38bdf8;">4+ Years</span>
+                                    </div>
+                                    <div class="fact-item">
+                                        <span class="fact-label"><i class='bx bx-mobile'></i> Mobile Platforms</span>
+                                        <span class="fact-val">iOS & Android</span>
+                                    </div>
+                                    <div class="fact-item">
+                                        <span class="fact-label"><i class='bx bx-map-pin'></i> Location</span>
+                                        <span class="fact-val">India 🇮🇳 (Remote)</span>
+                                    </div>
+                                    <div class="fact-item">
+                                        <span class="fact-label"><i class='bx bx-check-circle'></i> Status</span>
+                                        <span class="fact-val" style="color: #34d399;">Available Now</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 1.5rem;">
+                                <a href="https://api.whatsapp.com/send?phone=+919783457008&text=Hey%20Vishnu!%20Saw%20your%20portfolio" target="_blank" class="btn btn-cyan" style="width: 100%; padding: 0.75rem 1rem;">
+                                    <i class='bx bxl-whatsapp'></i>
+                                    <span>Chat On WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento Card 3: Live Code Snippet (6 Cols) -->
+                    <div class="bento-col-6">
+                        <div class="bento-card spotlight-card">
+                            <div class="bento-header">
+                                <div class="bento-icon icon-emerald">
+                                    <i class='bx bx-terminal'></i>
+                                </div>
+                                <h3 class="bento-title">Custom Plugin & API Standard</h3>
+                            </div>
+                            
+                            <div class="code-preview-window">
+                                <div class="code-window-bar">
+                                    <span class="window-dot dot-red"></span>
+                                    <span class="window-dot dot-yellow"></span>
+                                    <span class="window-dot dot-green"></span>
+                                    <span class="window-title">ApiGatewayBridge.php</span>
+                                </div>
+                                <div class="code-content">
+<span class="token-keyword">class</span> <span class="token-class">ApiGatewayBridge</span> {
+    <span class="token-comment">// Clean third-party integration with error handling</span>
+    <span class="token-keyword">public function</span> <span class="token-function">dispatchPaymentWebhook</span>(<span class="token-string">$payload</span>) {
+        <span class="token-keyword">$response</span> = Http::withToken(config(<span class="token-string">'services.gateway.key'</span>))
+            ->timeout(5)
+            ->post(<span class="token-string">'https://api.gateway.com/v1/checkout'</span>, [
+                <span class="token-string">'amount'</span> => <span class="token-string">$payload</span>[<span class="token-string">'amount'</span>],
+                <span class="token-string">'currency'</span> => <span class="token-string">'INR'</span>,
+                <span class="token-string">'metadata'</span> => [<span class="token-string">'user_id'</span> => auth()->id()]
+            ]);
+
+        <span class="token-keyword">return</span> <span class="token-string">$response</span>->successful() 
+            ? <span class="token-string">$response</span>->json() 
+            : <span class="token-keyword">throw new</span> <span class="token-class">PaymentException</span>();
+    }
+}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento Card 4: Architecture Principles (6 Cols) -->
+                    <div class="bento-col-6">
+                        <div class="bento-card spotlight-card">
+                            <div>
+                                <div class="bento-header">
+                                    <div class="bento-icon icon-purple">
+                                        <i class='bx bx-shield-quarter'></i>
+                                    </div>
+                                    <h3 class="bento-title">Core Engineering Values</h3>
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                    <div style="display: flex; gap: 0.75rem;">
+                                        <i class='bx bx-check-double' style="color: #38bdf8; font-size: 1.3rem; margin-top: 0.2rem;"></i>
+                                        <div>
+                                            <h4 style="color: var(--text-white); font-size: 0.95rem; font-weight: 700;">Performance & Speed Optimization</h4>
+                                            <p style="color: var(--text-secondary); font-size: 0.85rem;">Eliminating bottlenecks, query caching, asset minification, and sub-second load times.</p>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 0.75rem;">
+                                        <i class='bx bx-mobile-alt' style="color: #a855f7; font-size: 1.3rem; margin-top: 0.2rem;"></i>
+                                        <div>
+                                            <h4 style="color: var(--text-white); font-size: 0.95rem; font-weight: 700;">Cross-Platform Consistency</h4>
+                                            <p style="color: var(--text-secondary); font-size: 0.85rem;">Delivering unified native UI experiences across both iOS & Android via React Native.</p>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 0.75rem;">
+                                        <i class='bx bx-plug' style="color: #10b981; font-size: 1.3rem; margin-top: 0.2rem;"></i>
+                                        <div>
+                                            <h4 style="color: var(--text-white); font-size: 0.95rem; font-weight: 700;">Resilient API & Webhook Architecture</h4>
+                                            <p style="color: var(--text-secondary); font-size: 0.85rem;">Securing endpoints, verifying signatures, handling retries, and clean logging pipelines.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--=============== SKILLS SECTION ===============-->
+        <section class="skills section" id="skills">
+            <div class="container">
+                <div class="section__header">
+                    <div class="section__pill">
+                        <i class='bx bx-chip'></i>
+                        <span>Technical Arsenal</span>
+                    </div>
+                    <h2 class="section__title">Skills & Technologies</h2>
+                    <p class="section__subtitle">A comprehensive breakdown of frameworks, databases, and mobile toolsets I utilize daily across 4+ years of engineering.</p>
+                </div>
+
+                <!-- Category Filter Tabs -->
+                <div class="skills__category-tabs">
+                    <button class="skill-tab-btn active" data-filter="all">
+                        <i class='bx bx-grid-alt'></i>
+                        <span>All Skills</span>
+                    </button>
+                    <button class="skill-tab-btn" data-filter="backend">
+                        <i class='bx bx-server'></i>
+                        <span>Laravel & PHP</span>
+                    </button>
+                    <button class="skill-tab-btn" data-filter="mobile">
+                        <i class='bx bx-mobile-alt'></i>
+                        <span>React Native (Mobile)</span>
+                    </button>
+                    <button class="skill-tab-btn" data-filter="wordpress">
+                        <i class='bx bxl-wordpress'></i>
+                        <span>WordPress & Plugins</span>
+                    </button>
+                    <button class="skill-tab-btn" data-filter="mern">
+                        <i class='bx bxl-react'></i>
+                        <span>MERN & Frontend</span>
+                    </button>
+                    <button class="skill-tab-btn" data-filter="apis">
+                        <i class='bx bx-data'></i>
+                        <span>APIs & Databases</span>
+                    </button>
+                </div>
+
+                <!-- Skills Grid -->
+                <div class="skills__grid">
+                    <!-- PHP 8.x -->
+                    <div class="skill-card spotlight-card" data-category="backend">
+                        <div class="skill-card-icon icon-php">
+                            <i class='bx bxl-php'></i>
+                        </div>
+                        <div class="skill-card-info">
+                            <div class="skill-card-name">PHP 8.x</div>
+                            <span class="skill-card-badge">Advanced • 4+ Years • OOP & Architecture</span>
+                            <div class="skill-meter">
+                                <div class="skill-meter-fill" data-width="96%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Laravel 11 -->
+                    <div class="skill-card spotlight-card" data-category="backend">
+                        <div class="skill-card-icon icon-laravel">
+                            <i class='bx bxl-meta'></i>
+                        </div>
+                        <div class="skill-card-info">
+                            <div class="skill-card-name">Laravel 11</div>
+                            <span class="skill-card-badge">Advanced • Full Ecosystem & MVC</span>
+                            <div class="skill-meter">
+                                <div class="skill-meter-fill" data-width="94%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- React Native (iOS & Android) -->
+                    <div class="skill-card spotlight-card" data-category="mobile mern">
+                        <div class="skill-card-icon icon-react">
+                            <i class='bx bxl-react'></i>
+                        </div>
+                        <div class="skill-card-info">
+                            <div class="skill-card-name">React Native (iOS & Android)</div>
+                            <span class="skill-card-badge">Advanced • Cross-Platform Mobile Apps</span>
+                            <div class="skill-meter">
+                                <div class="skill-meter-fill" data-width="90%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WordPress (Custom Plugins & Themes) -->
+                    <div class="skill-card spotlight-card" data-category="wordpress backend">
+                        <div class="skill-card-icon icon-wp">
+                            <i class='bx bxl-wordpress'></i>
+                        </div>
+                        <div class="skill-card-info">
+                            <div class="skill-card-name">WordPress & Custom Plugins</div>
+                            <span class="skill-card-badge">Advanced • Theme Architecture & Hooks</span>
+                            <div class="skill-meter">
+                                <div class="skill-meter-fill" data-width="92%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MERN Stack -->
+                    <div class="skill-card spotlight-card" data-category="mern">
+                        <div class="skill-card-icon icon-node">
+                            <i class='bx bxl-nodejs'></i>
+                        </div>
+                        <div class="skill-card-info">
+                            <div class="skill-card-name">MERN Stack</div>
+                            <span class="skill-card-badge">Proficient • MongoDB, Express, React, Node</span>
+                            <div class="skill-meter">
+                                <div class="skill-meter-fill" data-width="86%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Third-Party APIs & Payment Gateways -->
+                    <div class="skill-card spotlight-card" data-category="apis backend">
+                        <div class="skill-card-icon icon-api">
+                            <i class='bx bx-network-chart'></i>
+                        </div>
+                        <div class="skill-card-info">
+                            <div class="skill-card-name">Third-Party APIs & Webhooks</div>
+                            <span class="skill-card-badge">Advanced • Stripe, WhatsApp, REST</span>
+                            <div class="skill-meter">
+                                <div class="skill-meter-fill" data-width="94%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Livewire 3 -->
+                    <div class="skill-card spotlight-card" data-category="backend mern">
+                        <div class="skill-card-icon icon-livewire">
+                            <i class='bx bx-bolt-circle'></i>
+                        </div>
+                        <div class="skill-card-info">
+                            <div class="skill-card-name">Livewire 3 & Alpine.js</div>
+                            <span class="skill-card-badge">Advanced • Dynamic Reactive UI</span>
+                            <div class="skill-meter">
+                                <div class="skill-meter-fill" data-width="92%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MySQL -->
+                    <div class="skill-card spotlight-card" data-category="apis backend">
+                        <div class="skill-card-icon icon-mysql">
+                            <i class='bx bxs-data'></i>
+                        </div>
+                        <div class="skill-card-info">
+                            <div class="skill-card-name">MySQL & Relational DBs</div>
+                            <span class="skill-card-badge">Advanced • Normalization, Indexing & Speed</span>
+                            <div class="skill-meter">
+                                <div class="skill-meter-fill" data-width="90%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tailwind CSS & Blade -->
+                    <div class="skill-card spotlight-card" data-category="mern">
+                        <div class="skill-card-icon icon-tailwind">
+                            <i class='bx bxl-tailwind-css'></i>
+                        </div>
+                        <div class="skill-card-info">
+                            <div class="skill-card-name">Tailwind CSS & Blade</div>
+                            <span class="skill-card-badge">Advanced • Design Systems & Responsive</span>
+                            <div class="skill-meter">
+                                <div class="skill-meter-fill" data-width="95%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Git & GitHub -->
+                    <div class="skill-card spotlight-card" data-category="apis">
+                        <div class="skill-card-icon icon-git">
+                            <i class='bx bxl-git'></i>
+                        </div>
+                        <div class="skill-card-info">
+                            <div class="skill-card-name">Git & Version Control</div>
+                            <span class="skill-card-badge">Advanced • Branching & CI Workflows</span>
+                            <div class="skill-meter">
+                                <div class="skill-meter-fill" data-width="92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--=============== FEATURED PROJECTS SECTION ===============-->
+        <section class="work section" id="work">
+            <div class="container">
+                <div class="section__header">
+                    <div class="section__pill">
+                        <i class='bx bx-folder-open'></i>
+                        <span>Production Showcase</span>
+                    </div>
+                    <h2 class="section__title">Featured Projects</h2>
+                    <p class="section__subtitle">Scalable SaaS systems, mobile applications, and custom platforms built for measurable results.</p>
+                </div>
+
+                <!-- Project Filters -->
+                <div class="work__filters">
+                    <button class="work__filter-btn active" data-filter="all">All Projects</button>
+                    <button class="work__filter-btn" data-filter="fullstack">Full-Stack SaaS</button>
+                    <button class="work__filter-btn" data-filter="web">Web & APIs</button>
+                    <button class="work__filter-btn" data-filter="uiux">Interactive & 3D</button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="projects__grid">
+                    <!-- Project 1: CoworkLibrary (Flagship) -->
+                    <div class="project-card spotlight-card" data-category="fullstack web">
+                        <div class="project-card-image-wrap">
+                            <span class="project-badge-overlay">
+                                <i class='bx bxs-star'></i> Flagship Platform
+                            </span>
+                            <img src="assets/img/cowork-library.jpg" alt="CoworkLibrary Seat Booking Platform" class="project-card-img">
+                        </div>
+
+                        <div class="project-card-body">
+                            <h3 class="project-card-title">CoworkLibrary — SaaS Seat Management</h3>
+                            <p class="project-card-desc">
+                                Next-generation shared workspace reservation and library seat management engine. 
+                                Features visual floor-plan seating, instant Livewire reactive seat filters, 
+                                subscription management, and complete revenue analytics.
+                            </p>
+
+                            <div class="project-tech-tags">
+                                <span class="tech-tag">Laravel 11</span>
+                                <span class="tech-tag">Livewire 3</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">Tailwind CSS</span>
+                                <span class="tech-tag">Alpine.js</span>
+                            </div>
+
+                            <div class="project-card-footer">
+                                <button class="btn-open-modal project-action-link" data-project="cowork">
+                                    <span>Case Study & Specs</span>
+                                    <i class='bx bx-right-arrow-alt'></i>
+                                </button>
+                                <a href="https://github.com/VishnuCraft" target="_blank" class="project-secondary-link">
+                                    <i class='bx bxl-github'></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Apex CRM -->
+                    <div class="project-card spotlight-card" data-category="fullstack web">
+                        <div class="project-card-image-wrap">
+                            <span class="project-badge-overlay" style="color: #c084fc;">
+                                <i class='bx bx-line-chart'></i> Enterprise Suite
+                            </span>
+                            <img src="assets/img/apex-crm.jpg" alt="Apex CRM Operations Platform" class="project-card-img">
+                        </div>
+
+                        <div class="project-card-body">
+                            <h3 class="project-card-title">Apex CRM — Operations & Analytics Portal</h3>
+                            <p class="project-card-desc">
+                                High-throughput CRM system designed for multi-tier organizations. Includes 
+                                granular role-based access control (RBAC), automated invoice generator, lead conversion 
+                                visual pipelines, and RESTful webhook integrations.
+                            </p>
+
+                            <div class="project-tech-tags">
+                                <span class="tech-tag">PHP 8.x</span>
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">MySQL Indexing</span>
+                                <span class="tech-tag">Chart.js</span>
+                                <span class="tech-tag">REST APIs</span>
+                            </div>
+
+                            <div class="project-card-footer">
+                                <button class="btn-open-modal project-action-link" data-project="apex">
+                                    <span>Case Study & Specs</span>
+                                    <i class='bx bx-right-arrow-alt'></i>
+                                </button>
+                                <a href="https://github.com/VishnuCraft" target="_blank" class="project-secondary-link">
+                                    <i class='bx bxl-github'></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Nexus Gear E-Commerce -->
+                    <div class="project-card spotlight-card" data-category="fullstack web">
+                        <div class="project-card-image-wrap">
+                            <span class="project-badge-overlay" style="color: #34d399;">
+                                <i class='bx bx-shopping-bag'></i> High-Speed Commerce
+                            </span>
+                            <img src="assets/img/nexus-ecommerce.jpg" alt="Nexus Gear E-Commerce Platform" class="project-card-img">
+                        </div>
+
+                        <div class="project-card-body">
+                            <h3 class="project-card-title">Nexus Gear — E-Commerce Engine</h3>
+                            <p class="project-card-desc">
+                                High-speed digital storefront built with persistent shopping cart states, slide-out 
+                                cart drawer, automated inventory alerts, Stripe payment gateway integration, and 
+                                an intuitive admin product management suite.
+                            </p>
+
+                            <div class="project-tech-tags">
+                                <span class="tech-tag">PHP MVC</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">Stripe API</span>
+                                <span class="tech-tag">Modern JS</span>
+                                <span class="tech-tag">Tailwind</span>
+                            </div>
+
+                            <div class="project-card-footer">
+                                <button class="btn-open-modal project-action-link" data-project="nexus">
+                                    <span>Case Study & Specs</span>
+                                    <i class='bx bx-right-arrow-alt'></i>
+                                </button>
+                                <a href="https://github.com/VishnuCraft" target="_blank" class="project-secondary-link">
+                                    <i class='bx bxl-github'></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: VishnuCraft 3D Portfolio -->
+                    <div class="project-card spotlight-card" data-category="uiux">
+                        <div class="project-card-image-wrap">
+                            <span class="project-badge-overlay" style="color: #f472b6;">
+                                <i class='bx bx-brush'></i> 3D Experience
+                            </span>
+                            <img src="assets/img/work3.png" alt="VishnuCraft 3D Portfolio" class="project-card-img">
+                        </div>
+
+                        <div class="project-card-body">
+                            <h3 class="project-card-title">VishnuCraft — Interactive 3D Showcase</h3>
+                            <p class="project-card-desc">
+                                Ultra-sleek personal digital hub designed with HTML5 Canvas constellation physics, 
+                                interactive card spotlight borders, 3D card tilt, ambient music soundscapes, and 
+                                zero-dependency vanilla architecture.
+                            </p>
+
+                            <div class="project-tech-tags">
+                                <span class="tech-tag">HTML5 Canvas</span>
+                                <span class="tech-tag">Neo-Glassmorphism</span>
+                                <span class="tech-tag">Vanilla JS</span>
+                                <span class="tech-tag">Ambient Sound</span>
+                            </div>
+
+                            <div class="project-card-footer">
+                                <button class="btn-open-modal project-action-link" data-project="portfolio">
+                                    <span>Case Study & Specs</span>
+                                    <i class='bx bx-right-arrow-alt'></i>
+                                </button>
+                                <a href="https://github.com/VishnuCraft" target="_blank" class="project-secondary-link">
+                                    <i class='bx bxl-github'></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--=============== SERVICES SECTION ===============-->
+        <section class="services section" id="services">
+            <div class="container">
+                <div class="section__header">
+                    <div class="section__pill">
+                        <i class='bx bx-cube'></i>
+                        <span>What I Deliver</span>
+                    </div>
+                    <h2 class="section__title">Solutions & Capabilities</h2>
+                    <p class="section__subtitle">Transforming complex requirements into high-performance web and mobile products.</p>
+                </div>
+
+                <div class="services__grid">
+                    <!-- Service 1 -->
+                    <div class="service-card spotlight-card">
+                        <div class="service-icon-box">
+                            <i class='bx bx-server'></i>
+                        </div>
+                        <h3 class="service-title">Full-Stack Laravel & MERN</h3>
+                        <p class="service-desc">
+                            End-to-end development of dynamic SaaS web platforms, admin panels, and internal portals using modern Laravel 11 and MERN stack standards.
+                        </p>
+                        <ul class="service-features-list">
+                            <li><i class='bx bx-check'></i> Clean MVC & modular code structure</li>
+                            <li><i class='bx bx-check'></i> Reactive Livewire 3 components</li>
+                            <li><i class='bx bx-check'></i> Scalable role-based authentication</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="service-card spotlight-card">
+                        <div class="service-icon-box" style="background: var(--gradient-cyan-indigo);">
+                            <i class='bx bx-mobile-alt'></i>
+                        </div>
+                        <h3 class="service-title">React Native Apps (iOS & Android)</h3>
+                        <p class="service-desc">
+                            Cross-platform mobile application development delivering 60fps native performance, offline persistence, and seamless push notification pipelines.
+                        </p>
+                        <ul class="service-features-list">
+                            <li><i class='bx bx-check'></i> Single codebase for iOS and Android</li>
+                            <li><i class='bx bx-check'></i> Native device feature integrations</li>
+                            <li><i class='bx bx-check'></i> Smooth gesture-driven navigation</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="service-card spotlight-card">
+                        <div class="service-icon-box" style="background: var(--gradient-emerald-cyan);">
+                            <i class='bx bxl-wordpress'></i>
+                        </div>
+                        <h3 class="service-title">WordPress Plugins & Custom Themes</h3>
+                        <p class="service-desc">
+                            Custom plugin engineering from ground up, bespoke theme creation, WooCommerce customizations, and speed optimization for enterprise sites.
+                        </p>
+                        <ul class="service-features-list">
+                            <li><i class='bx bx-check'></i> Secure custom plugin development</li>
+                            <li><i class='bx bx-check'></i> Zero-bloat, pixel-perfect themes</li>
+                            <li><i class='bx bx-check'></i> Advanced custom fields & hooks</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="service-card spotlight-card">
+                        <div class="service-icon-box" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);">
+                            <i class='bx bx-network-chart'></i>
+                        </div>
+                        <h3 class="service-title">Third-Party APIs & Payment Gateways</h3>
+                        <p class="service-desc">
+                            Integration of complex third-party services including Stripe, PayPal, WhatsApp APIs, transactional email pipelines, and real-time webhooks.
+                        </p>
+                        <ul class="service-features-list">
+                            <li><i class='bx bx-check'></i> Bulletproof payment flow handling</li>
+                            <li><i class='bx bx-check'></i> Automated webhook synchronization</li>
+                            <li><i class='bx bx-check'></i> Sub-100ms API response latency</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--=============== TESTIMONIALS SECTION ===============-->
+        <section class="testimonial section" id="testimonials">
+            <div class="container">
+                <div class="section__header">
+                    <div class="section__pill">
+                        <i class='bx bx-star'></i>
+                        <span>Client Endorsements</span>
+                    </div>
+                    <h2 class="section__title">What People Say</h2>
+                    <p class="section__subtitle">Collaborators and clients who trusted me with their mission-critical web & mobile applications.</p>
+                </div>
+
+                <div class="testimonials__slider swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Review 1 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-card spotlight-card">
+                                <div>
+                                    <div class="testimonial-stars">
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                                    <p class="testimonial-quote">
+                                        "Vishnu delivered our Laravel management system well ahead of schedule. His understanding of 
+                                        database relations, custom plugins, and clean UI interactions is extraordinary. A true professional!"
+                                    </p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="assets/img/testimonial1.jpg" alt="Yash S." class="author-avatar">
+                                    <div>
+                                        <div class="author-name">Yash Sharma</div>
+                                        <div class="author-role">Tech Lead & Founder</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-card spotlight-card">
+                                <div>
+                                    <div class="testimonial-stars">
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                                    <p class="testimonial-quote">
+                                        "The Livewire search and React Native mobile implementation blew our team away. The UI is 
+                                        insanely fast and our customers love the responsiveness. Highly recommend Vishnu!"
+                                    </p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="assets/img/testimonial2.jpg" alt="Rahul M." class="author-avatar">
+                                    <div>
+                                        <div class="author-name">Rahul Mehta</div>
+                                        <div class="author-role">Operations Manager, CoSpace</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 3 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-card spotlight-card">
+                                <div>
+                                    <div class="testimonial-stars">
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                                    <p class="testimonial-quote">
+                                        "Working with Vishnu was effortless. Clean Git commits, crystal clear communication, 
+                                        and code that was a pleasure to review. He treats your project like his own."
+                                    </p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="assets/img/testimonial3.jpg" alt="Vikram K." class="author-avatar">
+                                    <div>
+                                        <div class="author-name">Vikram Kapoor</div>
+                                        <div class="author-role">Product Architect</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <!--=============== CONTACT SECTION ===============-->
+        <section class="contact section" id="contact">
+            <div class="container">
+                <div class="section__header">
+                    <div class="section__pill">
+                        <i class='bx bx-paper-plane'></i>
+                        <span>Start A Conversation</span>
+                    </div>
+                    <h2 class="section__title">Let's Build Something Great</h2>
+                    <p class="section__subtitle">Have a project idea, freelance opportunity, or full-time position? Reach out directly and let's connect.</p>
+                </div>
+
+                <div class="contact__container">
+                    <!-- Contact Channels -->
+                    <div class="contact-info-panel">
+                        <!-- WhatsApp -->
+                        <div class="contact-method-card spotlight-card">
+                            <div class="contact-method-left">
+                                <div class="contact-method-icon icon-whatsapp">
+                                    <i class='bx bxl-whatsapp'></i>
+                                </div>
+                                <div>
+                                    <div class="contact-method-title">Instant Chat</div>
+                                    <div class="contact-method-value">+91 9783457008</div>
+                                </div>
+                            </div>
+                            <a href="https://api.whatsapp.com/send?phone=+919783457008&text=Hey%20Vishnu!%20Saw%20your%20portfolio%20and%20wanted%20to%20connect." target="_blank" class="contact-btn-action">
+                                <span>Message</span>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="contact-method-card spotlight-card">
+                            <div class="contact-method-left">
+                                <div class="contact-method-icon icon-email">
+                                    <i class='bx bx-envelope'></i>
+                                </div>
+                                <div>
+                                    <div class="contact-method-title">Email Address</div>
+                                    <div class="contact-method-value">ecmascript.php@gmail.com</div>
+                                </div>
+                            </div>
+                            <a href="mailto:ecmascript.php@gmail.com" class="contact-btn-action">
+                                <span>Mail Me</span>
+                                <i class='bx bx-mail-send'></i>
+                            </a>
+                        </div>
+
+                        <!-- Social Handles -->
+                        <div class="contact-method-card spotlight-card">
+                            <div class="contact-method-left">
+                                <div class="contact-method-icon icon-social">
+                                    <i class='bx bxl-linkedin'></i>
+                                </div>
+                                <div>
+                                    <div class="contact-method-title">LinkedIn Profile</div>
+                                    <div class="contact-method-value">vishnu-kumawat-php</div>
+                                </div>
+                            </div>
+                            <a href="https://www.linkedin.com/in/vishnu-kumawat-php/" target="_blank" class="contact-btn-action">
+                                <span>Connect</span>
+                                <i class='bx bx-link-external'></i>
+                            </a>
+                        </div>
+
+                        <!-- Twitter / X -->
+                        <div class="contact-method-card spotlight-card">
+                            <div class="contact-method-left">
+                                <div class="contact-method-icon icon-twitter">
+                                    <i class='bx bxl-twitter'></i>
+                                </div>
+                                <div>
+                                    <div class="contact-method-title">Twitter / X</div>
+                                    <div class="contact-method-value">@vishnu_php</div>
+                                </div>
+                            </div>
+                            <a href="https://x.com/vishnu_php?s=21" target="_blank" class="contact-btn-action">
+                                <span>Follow</span>
+                                <i class='bx bx-link-external'></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Card -->
+                    <div class="contact-form-card spotlight-card">
+                        <form id="portfolio-contact-form" class="contact-form">
+                            <div class="form-group">
+                                <label for="form-name" class="form-label">Your Name</label>
+                                <input type="text" id="form-name" class="form-input" placeholder="e.g. Alex Rivera" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-email" class="form-label">Email Address</label>
+                                <input type="email" id="form-email" class="form-input" placeholder="e.g. alex@company.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-subject" class="form-label">Subject</label>
+                                <input type="text" id="form-subject" class="form-input" placeholder="e.g. Full-Stack / Mobile App / WordPress Project" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-message" class="form-label">Message</label>
+                                <textarea id="form-message" class="form-textarea" placeholder="Tell me about your project, timeline, or requirements..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class='bx bx-paper-plane'></i>
+                                <span>Send Message</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
     <!--=============== FOOTER ===============-->
     <footer class="footer">
-        <div class="footer__container container">
-            <h1 class="footer__title">VISHNU</h1>
+        <div class="container">
+            <div class="footer__top">
+                <div style="display: flex; align-items: center; gap: 0.85rem; justify-content: center;">
+                    <img src="assets/img/vishnu-logo.jpg" alt="Vishnu Logo" style="width: 44px; height: 44px; border-radius: 12px; box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); border: 1px solid rgba(99, 102, 241, 0.3);">
+                    <span class="footer__brand">VISHNU KUMAWAT</span>
+                </div>
+                <p class="footer__tagline">
+                    Full-Stack Laravel, MERN & Mobile App Engineer crafting high-performance, accessible, and resilient digital solutions.
+                </p>
 
-            <ul class="footer__list">
+                <div class="footer__social-links">
+                    <a href="https://github.com/VishnuCraft" target="_blank" class="social-icon-btn" title="GitHub">
+                        <i class='bx bxl-github'></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/vishnu-kumawat-php/" target="_blank" class="social-icon-btn" title="LinkedIn">
+                        <i class='bx bxl-linkedin'></i>
+                    </a>
+                    <a href="https://x.com/vishnu_php?s=21" target="_blank" class="social-icon-btn" title="Twitter / X">
+                        <i class='bx bxl-twitter'></i>
+                    </a>
+                    <a href="https://www.instagram.com/kumaw_atvishnu.php/" target="_blank" class="social-icon-btn" title="Instagram">
+                        <i class='bx bxl-instagram'></i>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=+919783457008" target="_blank" class="social-icon-btn" title="WhatsApp">
+                        <i class='bx bxl-whatsapp'></i>
+                    </a>
+                </div>
+            </div>
 
-                <li class="footer__item">
-                    <a href="#" class="footer__link">Home</a>
-                </li>
-                <li class="footer__item">
-                    <a href="#about" class="footer__link">About</a>
-                </li>
-                <li class="footer__item">
-                    <a href="#skills" class="footer__link">Skills</a>
-                </li>
-                <li class="footer__item">
-                    <a href="#work" class="footer__link">Work</a>
-                </li>
-                <li class="footer__item">
-                    <a href="#contact" class="footer__link">Contact</a>
-                </li>
-            </ul>
-
-            <ul class="footer__social">
-                <li class="footer__social-item">
-                    <a href="NO " target="_blank" class="footer__social-link">
-                        <i class='bx bxl-facebook footer__social-icon'></i>
-                    </a>
-                </li>
-                <li class="footer__social-item">
-                    <a href="https://x.com/vishnu_php?s=21" target="_blank" class="footer__social-link">
-                        <i class='bx bxl-twitter footer__social-icon'></i>
-                    </a>
-                </li>
-                <li class="footer__social-item">
-                    <a href="https://www.linkedin.com/in/vishnu" target="_blank" class="footer__social-link">
-                        <i class='bx bxl-linkedin footer__social-icon'></i>
-                    </a>
-                </li>
-                <li class="footer__social-item">
-                    <a href="https://www.instagram.com/kumaw_atvishnu.php/" target="_blank" class="footer__social-link">
-                        <i class='bx bxl-instagram footer__social-icon'></i>
-                    </a>
-                </li>
-            </ul>
-
-            <span class="footer__copy">
-                &#169; 2023 imr4n. All rights reserved.
-            </span>
+            <div class="footer__bottom">
+                <span>&copy; 2026 Vishnu Kumawat. All rights reserved. Crafted with precision & passion.</span>
+                <a href="#home" class="back-to-top-btn">
+                    <span>Back to Top</span>
+                    <i class='bx bx-up-arrow-alt'></i>
+                </a>
+            </div>
         </div>
     </footer>
 
-    <!--=============== SCROLLREVEAL ===============-->
+    <!--=============== PROJECT DETAILS MODAL ===============-->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal-content">
+            <button class="modal-close-btn" id="modal-close-btn" title="Close Modal">
+                <i class='bx bx-x'></i>
+            </button>
+            <img src="" alt="Project Banner" class="modal-banner" id="modal-banner">
 
-    <!-- <script src="assets/js/scrollreveal.min.js"></script> -->
-    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+            <div class="modal-body">
+                <h3 class="modal-title" id="modal-title">Project Title</h3>
+                <div class="modal-category" id="modal-category">Category</div>
+                <p class="modal-desc" id="modal-desc">Description</p>
+
+                <div class="modal-features-title">Key Architectural Features:</div>
+                <ul class="modal-features-list" id="modal-features">
+                    <!-- Dynamically populated via JS -->
+                </ul>
+
+                <div class="modal-actions">
+                    <a href="#" target="_blank" class="btn btn-primary" id="modal-demo-btn">
+                        <i class='bx bx-link-external'></i>
+                        <span>Live Demo</span>
+                    </a>
+                    <a href="#" target="_blank" class="btn btn-secondary" id="modal-github-btn">
+                        <i class='bx bxl-github'></i>
+                        <span>Source Code</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!--=============== SWIPER JS ===============-->
     <script src="assets/js/swiper-bundle.min.js"></script>
-
-    <!--=============== MIXITUP FILTER ===============-->
-    <script src="assets/js/mixitup.min.js"></script>
 
     <!--=============== MAIN JS ===============-->
     <script src="assets/js/main.js"></script>
